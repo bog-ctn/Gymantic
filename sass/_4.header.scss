@@ -1,0 +1,280 @@
+.header {
+  grid-column: container-start/container-end;
+  // Dynamic class
+  &.open .header__menu--line {
+    background-color: transparent;
+  }
+
+  &.open .header__menu--line::before {
+    transform: rotate(45deg);
+  }
+  &.open .header__menu--line::after {
+    transform: rotate(-45deg);
+  }
+
+  &.open .header__menu--line::before,
+  &.open .header__menu--line::after {
+    top: 0;
+  }
+  @include respond(tab-por) {
+    &.open nav {
+      transform: rotateY(0);
+    }
+
+    &__menu {
+      height: 4rem;
+      width: 4rem;
+      position: fixed;
+      top: 4rem;
+      right: 4rem;
+      z-index: 20;
+      cursor: pointer;
+      &--line {
+        position: absolute;
+        width: 3.5rem;
+        height: 0.2rem;
+        background-color: var(--color-quinary);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.5s;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: var(--color-quinary);
+          transition: all 0.5s;
+        }
+
+        &::before {
+          top: -500%;
+        }
+        &::after {
+          bottom: -500%;
+        }
+      }
+    }
+
+    &__overlay.open {
+      display: block;
+      opacity: 0.8;
+    }
+  }
+  // Overlay
+  &__overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-tertiary);
+    position: fixed;
+    opacity: 0;
+    display: none;
+    z-index: 10;
+  }
+
+  &__nav {
+    width: 100%;
+    height: 7rem;
+    line-height: 7rem;
+
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--color-primary);
+    text-transform: uppercase;
+    overflow: hidden;
+
+    @include respond(tab-por) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 25rem;
+      height: 100vh;
+      line-height: initial;
+      flex-direction: column;
+      text-align: center;
+      z-index: 20;
+      transform-origin: top left;
+      transform: perspective(70rem) rotateY(0.5turn);
+      transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    &--logo {
+      padding: 1rem;
+
+      img {
+        height: 5rem;
+        width: 5rem;
+      }
+    }
+
+    &--links {
+      display: flex;
+
+      @include respond(tab-por) {
+        height: 80%;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+
+      &__item {
+        a:link,
+        a:visited {
+          margin-right: 2vw;
+          padding: 0 1.5rem;
+          display: block;
+          position: relative;
+          transform-style: preserve-3d;
+          transform-origin: top;
+          transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+          @include respond(desktop) {
+            font-size: 1.7rem;
+          }
+          @include respond(tab-por) {
+            transform-origin: left;
+            margin-right: initial;
+            padding: 2rem;
+            font-size: 1.2rem;
+          }
+        }
+
+        a:hover,
+        a:active {
+          transform: rotateX(90deg);
+          @include respond(tab-por) {
+            transform: rotateY(90deg);
+          }
+        }
+
+        a:link::after,
+        a:visited::after {
+          content: attr(data-text);
+          background-color: var(--color-tertiary);
+          position: absolute;
+          left: 0;
+          bottom: -100%;
+          transform-origin: top;
+          transform: rotateX(-90deg);
+          padding: inherit;
+          @include respond(tab-por) {
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            transform-origin: left;
+            transform: rotateY(-90deg);
+          }
+        }
+      }
+
+      &__item:nth-child(odd) {
+        animation: downwards 1s forwards;
+
+        @include respond(tab-por) {
+          animation: initial;
+        }
+      }
+
+      &__item:nth-child(even) {
+        animation: upwards 1s forwards;
+
+        @include respond(tab-por) {
+          animation: initial;
+        }
+      }
+
+      // ---> Theme toggle button
+      &__toggle-container {
+        display: flex;
+        align-items: center;
+        @include respond(tab-por) {
+          justify-content: center;
+        }
+        input[type="checkbox"] {
+          position: relative;
+          width: 6rem;
+          height: 3rem;
+          appearance: none;
+          cursor: pointer;
+          background-color: var(--color-quinary);
+          border-radius: 2.5rem;
+          box-shadow: inset 0 0 0.6rem 0.1rem rgba(157, 158, 157, 0.8);
+          transition: all 0.5s ease-in-out;
+        }
+
+        input:checked[type="checkbox"] {
+          background-color: greenyellow;
+        }
+
+        input:not(:checked)[type="checkbox"] {
+          background-color: var(--color-tertiary);
+        }
+
+        input[type="checkbox"]::before,
+        input[type="checkbox"]::after {
+          content: "";
+          position: absolute;
+          background-color: var(--color-quinary);
+          width: 1.75rem;
+          height: 1.75rem;
+          border-radius: 50%;
+          top: 50%;
+          transform: translateY(-50%);
+          box-shadow: 0 0.1rem 0.3rem 0.1rem hsla(0, 0%, 50%, 0.35);
+          transition: all 1s ease-in-out;
+        }
+
+        input[type="checkbox"]::before {
+          left: 0.5rem;
+        }
+        input[type="checkbox"]::after {
+          right: 0.5rem;
+        }
+        input:checked[type="checkbox"]::before {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          box-shadow: none;
+        }
+        input:checked[type="checkbox"]::after {
+          top: 50%;
+          right: 50%;
+          transform: translate(50%, -50%);
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  //--------->Media Queries
+}
+
+// ---------> KEYFRAMES
+
+@keyframes downwards {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  80% {
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes upwards {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  80% {
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

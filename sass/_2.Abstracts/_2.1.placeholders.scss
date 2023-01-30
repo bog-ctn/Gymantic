@@ -1,0 +1,35 @@
+// *-*-*-*-*-*-*-*-*-*-*-* Placeholder Styles *-*-*-*-*-*-*-*-*-*-*-*
+// Bg Prop
+%bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+//Section Pad
+%sec-padding {
+  padding: 6vh 4vw;
+}
+
+//Section Heading
+%sec-headings {
+  font-size: font-size(md);
+  font-weight: font-weight(light);
+  color: var(--color-quinary);
+  letter-spacing: 0.2rem;
+}
+
+%sec-para {
+  font-size: font-size(sm);
+  font-family: "Balsamiq Sans", cursive;
+  color: var(--color-quinary);
+  letter-spacing: 0.2rem;
+}
+
+%sec-h3 {
+  font-size: font-size(sm);
+  color: var(--color-quinary);
+}
+%sec-h4 {
+  color: var(--color-quinary);
+}

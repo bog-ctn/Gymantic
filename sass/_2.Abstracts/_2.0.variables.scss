@@ -1,0 +1,54 @@
+//--------- COLORS
+
+/* Light color pallet*/
+
+html[data-theme="light"] {
+  --color-primary: hsl(87, 98%, 34%);
+  --color-primary-m: hsla(87, 100%, 45%, 0.55);
+  --color-secondary: hsl(274, 99%, 72%);
+  --color-secondary-m: hsl(274, 99%, 72%, 0.6);
+  --color-tertiary: hsl(185, 36%, 47%);
+  --color-tertiary-m: rgba(38, 52, 65, 0.65);
+  --color-quaternary: rgb(255, 235, 153);
+  --color-quaternary-m: rgba(192, 162, 43, 0.65);
+  --color-quinary: white;
+  --color-quinary-m: rgba(255, 255, 255, 0.5);
+}
+/* Dark color pallet*/
+html[data-theme="dark"] {
+  --color-primary: rgb(36, 38, 43);
+  --color-primary-m: rgba(36, 38, 43, 0.65);
+  --color-secondary: rgb(124, 185, 8);
+  --color-secondary-m: rgba(123, 185, 8, 0.5);
+  --color-tertiary: rgb(38, 52, 65);
+  --color-tertiary-m: hsla(183, 34%, 38%, 0.65);
+  --color-quaternary: hsl(220, 10%, 28%);
+  --color-quaternary-m: hsla(220, 10%, 28%, 0.65);
+  --color-quinary: white;
+  --color-quinary-m: rgba(255, 255, 255, 0.5);
+}
+
+// ------->  Font : weight
+$font-weigths: (
+  "thin": 100,
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+  "xbold": 900,
+);
+@function font-weight($weight) {
+  @return map-get($font-weigths, $weight);
+}
+
+// -----> font : sizes
+$font-sizes: (
+  "sm": calc(1.2rem + 0.5vw),
+  "reg": calc(1.5rem + 1vw),
+  "md": calc(1.5rem + 2vw),
+  "lg": calc(1.5rem + 5vw),
+  "xlg": calc(2rem + 5vw),
+);
+@function font-size($size) {
+  @return map-get($font-sizes, $size);
+}

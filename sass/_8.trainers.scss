@@ -1,0 +1,85 @@
+.trainers {
+  grid-column: center-start/center-end;
+  @extend %sec-padding;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  &__title {
+    @extend %sec-headings;
+    text-align: center;
+    margin-bottom: 2rem;
+    background-color: var(--color-tertiary-m);
+    border-radius: 0 0 8rem 8rem;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 6vh calc(1rem + 1vw);
+    place-items: center;
+  }
+
+  &__card {
+    display: grid;
+    gap: 2rem;
+    position: relative;
+    width: 30rem;
+    height: 30rem;
+    overflow: hidden;
+
+    &--overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: top;
+      transform: scaleY(0);
+      backdrop-filter: blur(2px);
+      transition: all 0.25s ease-in-out;
+      background-color: var(--color-tertiary-m);
+    }
+
+    &:hover &--overlay {
+      transform: scaleX(1);
+    }
+
+    &--specialty,
+    &--name {
+      text-transform: uppercase;
+      z-index: 3;
+      opacity: 0.4;
+      transform: translateX(-100%);
+      transition: all 0.5s 0.15s ease-in-out;
+    }
+    &--name {
+      padding-left: 1rem;
+      align-self: end;
+      @extend %sec-h3;
+    }
+    &--specialty {
+      text-align: center;
+      align-self: start;
+      @extend %sec-h4;
+      font-size: 1.4rem;
+      font-weight: font-weight(medium);
+    }
+
+    &:hover &--specialty,
+    &:hover &--name {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    &--img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(65%);
+      z-index: -1;
+    }
+  }
+}

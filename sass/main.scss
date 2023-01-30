@@ -1,0 +1,49 @@
+@import "./1.reset";
+@import "./_2.Abstracts/2.0.variables";
+@import "./_2.Abstracts/2.1.placeholders";
+@import "./_2.Abstracts/2.2.mixins";
+@import "./3.utilities";
+@import "./4.header";
+@import "./5.showcase";
+@import "./6.motto";
+@import "./7.features";
+@import "./8.trainers";
+@import "./9.testiomonials";
+@import "./10.clients";
+@import "./11.register";
+@import "./12.footer";
+
+html.transition,
+html.transition *,
+html.transition *::before,
+html.transition *::after {
+  transition: all 0.5s !important;
+  transition-delay: 0 !important;
+}
+
+// Button - Scroll UP
+
+.btn-scroll {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  border: none;
+  outline: none;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: var(--color-quinary-m);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 50;
+  i {
+    font-size: 3rem;
+    color: #000;
+  }
+}
+
+.btn-scroll.hidden {
+  display: none;
+}

@@ -1,0 +1,50 @@
+.motto {
+  grid-column: container-start/container-end;
+
+  background-image: url("../img/motto/motto-bg.jpg");
+  @extend %bg;
+  @extend %sec-padding;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  grid-gap: 2rem;
+  place-content: center;
+  @include respond(xsmall) {
+    grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+  }
+
+  &__content {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, min-content);
+    gap: 4vh;
+    background-color: var(--color-tertiary-m);
+  }
+
+  &__title {
+    @extend %sec-headings;
+  }
+
+  &__para {
+    @extend %sec-para;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      position: relative;
+      background: none;
+      justify-self: start;
+      align-self: end;
+      padding: 0.75rem 1.5rem;
+      transition: all 0.5s ease-in-out;
+      overflow: hidden;
+      background-color: var(--color-primary-m);
+    }
+
+    &:hover,
+    &:active {
+      background-color: var(--color-primary);
+    }
+  }
+}
