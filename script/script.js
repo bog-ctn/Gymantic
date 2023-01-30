@@ -205,9 +205,9 @@ const forwardTick = function () {
   current += 1;
 };
 const backwardsTick = function () {
-  progressSteps[current - 2].classList.add("active");
-  progressNum[current - 2].classList.add("active");
-  progressIcon[current - 2].classList.add("active");
+  progressSteps[current - 2].classList.remove("active");
+  progressNum[current - 2].classList.remove("active");
+  progressIcon[current - 2].classList.remove("active");
   current -= 1;
 };
 
